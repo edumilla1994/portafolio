@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eduardo Milla Rosillo — Full-Stack Developer</title>
+<meta name="description" content="Portafolio de Eduardo Itai Milla Rosillo, Bachiller en Ingeniería de Sistemas. Full-Stack Developer y Automation Engineer. Tumbes, Perú.">
+<meta name="theme-color" content="#0b0b0d">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_PE">
+<meta property="og:title" content="Eduardo Milla — Full-Stack Developer & Automation Engineer">
+<meta property="og:description" content="Marketplaces, automatización con IA y plataformas en producción. Tumbes, Perú.">
+<meta property="og:image" content="og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo-primitivopie.png">
+<link rel="stylesheet" href="fonts/fuentes.css">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-2:#111114;
+    --panel:#151519;
+    --panel-2:#191920;
+    --line:rgba(255,255,255,.10);
+    --line-2:rgba(255,255,255,.18);
+    --txt:#f3f3ef;
+    --muted:#9b9ba4;
+    --dim:#6d6d76;
+    --accent:#c7f464;
+    --accent-ink:#101204;
+    --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+    --display:"Anton",Impact,sans-serif;
+    --grotesk:"Bricolage Grotesque","Manrope",system-ui,sans-serif;
+    --cond:"Barlow Condensed",sans-serif;
+    --serif:"Instrument Serif",Georgia,serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font-family:"Manrope",system-ui,sans-serif;
+    font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  h1,h2{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:-.015em;line-height:.9}
+  h2{font-family:var(--grotesk);font-weight:700;letter-spacing:-.03em;line-height:1;text-transform:uppercase}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+
+  /* ---------- fondo ---------- */
+  .bg{position:fixed;inset:0;z-index:-2;background:
+    radial-gradient(1000px 600px at 80% -10%, rgba(199,244,100,.055), transparent 60%),
+    radial-gradient(800px 500px at -10% 15%, rgba(255,255,255,.035), transparent 55%),
+    var(--bg)}
+  .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.035;
+    background-image:radial-gradient(#fff .6px,transparent .6px);background-size:4px 4px}
+
+  /* ---------- progreso ---------- */
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:100;
+    background:var(--accent);box-shadow:0 0 14px rgba(199,244,100,.5)}
+
+  /* ---------- nav ---------- */
+  nav{position:sticky;top:0;z-index:70;background:rgba(11,11,13,.78);backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line)}
+  nav .wrap{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .mark{width:36px;height:36px;border-radius:8px;border:1px solid var(--line-2);
+    display:grid;place-items:center;font-family:var(--display);font-size:.95rem;letter-spacing:.05em}
+  .brand b{font-family:var(--cond);font-size:1.05rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+  .brand small{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;color:var(--dim);text-transform:uppercase}
+  nav ul{display:flex;gap:30px;list-style:none;font-family:var(--mono);font-size:.66rem;
+    letter-spacing:.14em;text-transform:uppercase}
+  nav ul a{color:var(--muted);transition:color .2s;position:relative}
+  nav ul a:hover,nav ul a.active{color:var(--txt)}
+  nav ul a.active::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:1px;background:var(--accent)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+    border-radius:8px;padding:13px 20px;border:1px solid var(--line-2);transition:.22s;white-space:nowrap;position:relative;overflow:hidden}
+  .btn:hover{transform:translateY(-2px);border-color:var(--accent);color:var(--accent)}
+  .btn.solid{background:var(--txt);color:#0b0b0d;border-color:var(--txt)}
+  .btn.solid:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .btn.lime{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .btn.lime:hover{filter:brightness(1.06)}
+  .btn.quiet{border-color:transparent;padding-left:4px;padding-right:4px;color:var(--muted)}
+  .btn.quiet:hover{color:var(--accent)}
+  @media(max-width:900px){nav ul{display:none}}
+
+  /* ---------- hero ---------- */
+  header{padding:72px 0 56px;position:relative}
+  .hero{display:grid;grid-template-columns:1.32fr .68fr;gap:48px;align-items:end}
+  .kicker{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.63rem;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+  .kicker::before{content:"";width:30px;height:1px;background:var(--accent)}
+  h1{font-size:clamp(3.4rem,8.6vw,7.4rem)}
+  .line{display:block;overflow:hidden}
+  .line > span{display:block;transform:translateY(105%);animation:rise 1s cubic-bezier(.19,1,.22,1) forwards}
+  .line:nth-child(2) > span{animation-delay:.12s}
+  @keyframes rise{to{transform:none}}
+  h1 .lime{color:var(--accent)}
+  .lead{margin-top:28px;max-width:540px;color:var(--muted);font-size:1.02rem}
+  .lead em{font-family:var(--serif);font-style:italic;font-size:1.12em;color:var(--txt)}
+  .lead b{color:var(--txt);font-weight:600}
+  .actions{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-top:34px}
+  .avail{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.62rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:34px}
+  .avail i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(199,244,100,.12);animation:pulse 2s infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 9px rgba(199,244,100,0)}}
+
+  /* foto */
+  .portrait{position:relative;justify-self:end;width:min(330px,100%)}
+  .portrait .circle{position:absolute;inset:-26px -26px auto auto;width:150px;height:150px;
+    border:1px solid var(--line-2);border-radius:50%;z-index:-1}
+  .portrait::before{content:"";position:absolute;inset:-50px -60px 12% -60px;z-index:-2;pointer-events:none;
+    background:radial-gradient(50% 45% at 50% 48%,rgba(199,244,100,.22),transparent 72%);filter:blur(26px)}
+  .portrait img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 30%;
+    filter:grayscale(.45) contrast(1.06);border:1px solid var(--line);border-radius:4px;
+    box-shadow:16px 16px 0 -1px var(--accent)}
+  .portrait::after{content:"";position:absolute;inset:0;border-radius:4px;pointer-events:none;
+    background:linear-gradient(180deg,transparent 55%,rgba(11,11,13,.55))}
+  .portrait .star{position:absolute;right:-34px;bottom:38%;color:var(--txt);font-size:1.2rem;opacity:.8}
+  .vertical{position:absolute;right:-62px;top:8%;writing-mode:vertical-rl;z-index:2;
+    font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+  @media(max-width:980px){.hero{grid-template-columns:1fr;gap:56px}.portrait{justify-self:start;order:-1;width:min(260px,70%)}
+    .portrait img{box-shadow:10px 10px 0 -1px var(--accent)}.vertical{display:none}}
+
+  /* ---------- marquesina ---------- */
+  .marquee{position:relative;margin:10px 0 64px;width:104%;margin-left:-2%;padding:13px 0;
+    background:var(--accent);color:var(--accent-ink);transform:rotate(-1.1deg);overflow:hidden;
+    box-shadow:0 30px 70px -34px rgba(199,244,100,.55)}
+  .marquee .track{display:flex;align-items:center;gap:24px;width:max-content;animation:slide 36s linear infinite}
+  .marquee:hover .track{animation-play-state:paused}
+  .marquee b{font-family:var(--display);font-weight:400;font-size:.94rem;letter-spacing:.07em;
+    text-transform:uppercase;white-space:nowrap}
+  .marquee i{font-style:normal;font-size:.78rem;opacity:.55}
+  @keyframes slide{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.marquee .track{animation:none}}
+
+  /* ---------- metricas ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);
+    border-radius:14px;background:var(--panel);overflow:hidden;margin:8px 0 54px}
+  .stat{padding:26px 26px 24px;border-right:1px solid var(--line);position:relative}
+  .stat:last-child{border-right:none}
+  .stat svg{color:var(--accent);opacity:.9;margin-bottom:12px}
+  .stat b{display:block;font-family:var(--display);font-size:2.6rem;line-height:1;letter-spacing:0}
+  .stat > span{display:block;margin-top:6px;font-family:var(--mono);font-size:.6rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  @media(max-width:820px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:none}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}}
+
+  /* ---------- secciones ---------- */
+  section{padding:86px 0 4px;scroll-margin-top:96px}
+  .sec-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+    padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:36px}
+  .sec-top .label{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  h2{font-size:clamp(2rem,4.4vw,3.4rem)}
+  .sec-top .side{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--dim);text-align:right;white-space:nowrap}
+  .sec-top .side a:hover{color:var(--accent)}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.19,1,.22,1),transform .7s cubic-bezier(.19,1,.22,1);transition-delay:var(--d,0s)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .line > span{animation:none;transform:none}
+  }
+
+  /* ---------- proyectos ---------- */
+  .work{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    display:flex;flex-direction:column;transition:.25s;position:relative}
+  .card:hover{border-color:var(--line-2);transform:translateY(-4px)}
+  .card .shot{aspect-ratio:16/10;position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+    padding:12px 12px 0;background:linear-gradient(180deg,#1d1d24,#0f0f12 75%)}
+  .browser{height:100%;display:flex;flex-direction:column;border:1px solid var(--line);border-bottom:0;
+    border-radius:9px 9px 0 0;overflow:hidden;background:#0e0e11;
+    transition:border-color .3s,box-shadow .3s}
+  .card:hover .browser{border-color:rgba(199,244,100,.38);box-shadow:0 22px 50px -24px rgba(199,244,100,.30)}
+  .chrome{display:flex;align-items:center;gap:6px;padding:8px 10px;border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.035);flex:none}
+  .chrome i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.20);flex:none}
+  .chrome i:nth-child(1){background:rgba(199,244,100,.80)}
+  .chrome span{margin-left:8px;font-family:var(--mono);font-size:.5rem;letter-spacing:.06em;color:var(--dim);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .browser img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;
+    transition:transform .8s cubic-bezier(.19,1,.22,1)}
+  .card:hover .browser img{transform:scale(1.045)}
+  .card .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card .body .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .card h3{font-family:var(--grotesk);font-size:1.12rem;font-weight:600;letter-spacing:-.01em}
+  .card .cat{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+  .card .desc{font-size:.85rem;color:var(--muted);flex:1}
+  .card .go{width:30px;height:30px;border-radius:50%;border:1px solid var(--line-2);
+    display:grid;place-items:center;transition:.2s;flex:none}
+  .card:hover .go{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);transform:rotate(45deg)}
+  .card .stackline{display:flex;flex-wrap:wrap;gap:6px}
+  .card .stackline span{font-family:var(--mono);font-size:.56rem;color:var(--dim);
+    border:1px solid var(--line);border-radius:4px;padding:2px 6px;letter-spacing:.04em}
+  @media(max-width:900px){.work{grid-template-columns:1fr}}
+
+  /* ---------- capacidades ---------- */
+  .caps{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .cap{background:var(--panel);padding:26px 28px;display:flex;gap:16px;transition:.2s;position:relative}
+  .cap:hover{background:var(--panel-2)}
+  .cap .num{margin-left:auto;font-family:var(--display);font-size:1.5rem;line-height:1;
+    color:rgba(255,255,255,.08);transition:color .25s}
+  .cap:hover .num{color:rgba(199,244,100,.45)}
+  .cap svg{flex:none;color:var(--accent);margin-top:3px}
+  .cap h3{font-family:var(--grotesk);font-size:1.02rem;font-weight:600;letter-spacing:-.01em;margin-bottom:4px}
+  .cap p{font-size:.83rem;color:var(--muted)}
+  @media(max-width:760px){.caps{grid-template-columns:1fr}}
+
+  /* ---------- experiencia ---------- */
+  .exp{display:grid;gap:0}
+  .job{display:grid;grid-template-columns:150px 1fr;gap:28px;padding:24px 0;border-bottom:1px solid var(--line)}
+  .job:first-child{padding-top:0}
+  .job:last-child{border-bottom:none}
+  .job .when{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;color:var(--dim);padding-top:6px}
+  .job h3{font-family:var(--grotesk);font-size:1.08rem;font-weight:600;letter-spacing:-.01em}
+  .job .org{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin:2px 0 10px}
+  .job ul{list-style:none;display:grid;gap:6px}
+  .job li{position:relative;padding-left:16px;font-size:.86rem;color:var(--muted)}
+  .job li::before{content:"";position:absolute;left:0;top:.66em;width:5px;height:1px;background:var(--dim)}
+  @media(max-width:700px){.job{grid-template-columns:1fr;gap:6px}.job .when{padding-top:0}}
+
+  /* ---------- stack ---------- */
+  .stack-wrap{display:grid;grid-template-columns:1.4fr .6fr;gap:16px}
+  .stack{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .stack .group{background:var(--panel);padding:22px 24px}
+  .stack h3{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .stack ul{list-style:none;display:grid;gap:5px}
+  .stack li{font-size:.83rem;color:var(--muted)}
+  .cert{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
+  .cert h3{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+  .cert .item{padding:10px 0;border-bottom:1px solid var(--line)}
+  .cert .item:last-child{border-bottom:none;padding-bottom:0}
+  .cert b{display:block;font-family:var(--grotesk);font-size:.95rem;font-weight:600;letter-spacing:-.01em}
+  .cert span{font-size:.76rem;color:var(--dim)}
+  @media(max-width:900px){.stack-wrap{grid-template-columns:1fr}.stack{grid-template-columns:1fr}}
+
+  /* ---------- proceso ---------- */
+  .process{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .step{background:var(--panel);padding:22px 20px;transition:.2s}
+  .step:hover{background:var(--panel-2)}
+  .step .n{font-family:var(--mono);font-size:.62rem;color:var(--accent);letter-spacing:.12em}
+  .step h3{font-family:var(--grotesk);font-size:.96rem;font-weight:600;margin:10px 0 4px;letter-spacing:-.01em}
+  .step p{font-size:.76rem;color:var(--dim);line-height:1.45}
+  @media(max-width:900px){.process{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.process{grid-template-columns:1fr}}
+
+  /* ---------- contacto ---------- */
+  .cta{margin-top:14px;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    background:linear-gradient(120deg,#171a10 0%,#121216 45%,#141419 100%);position:relative}
+  .cta .inner{padding:56px 48px;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+  .cta h2{font-size:clamp(2.2rem,5vw,4.4rem);line-height:.92}
+  .cta h2 em{font-family:var(--serif);font-style:italic;text-transform:none;color:var(--accent);letter-spacing:0}
+  .cta .side p{color:var(--muted);font-size:.92rem;margin-bottom:20px}
+  .cta .links{display:grid;gap:10px}
+  .cta .links a{display:flex;justify-content:space-between;align-items:center;gap:14px;
+    padding:13px 16px;border:1px solid var(--line);border-radius:9px;font-family:var(--mono);
+    font-size:.68rem;letter-spacing:.06em;transition:.2s;background:rgba(0,0,0,.18)}
+  .cta .links a:hover{border-color:var(--accent);color:var(--accent);background:rgba(199,244,100,.04)}
+  @media(max-width:820px){.cta .inner{grid-template-columns:1fr;padding:40px 26px}}
+
+  /* ---------- footer ---------- */
+  footer{margin-top:56px;border-top:1px solid var(--line);padding:26px 0 40px}
+  .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+  .foot a:hover{color:var(--accent)}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div class="bg"></div><div class="grain"></div>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark">EM</div>
+      <div>
+        <b>Eduardo Milla</b>
+        <small>Ing. de Sistemas</small>
+      </div>
+    </div>
+    <ul>
+      <li><a href="#work">Proyectos</a></li>
+      <li><a href="#caps">Capacidades</a></li>
+      <li><a href="#exp">Experiencia</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="btn lime" href="https://wa.me/51952964462" target="_blank">Hablemos ↗</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap hero">
+    <div>
+      <div class="kicker">Tumbes, Perú · Disponible para proyectos</div>
+      <h1>
+        <span class="line"><span>Full-Stack</span></span>
+        <span class="line"><span class="lime">Developer</span></span>
+      </h1>
+      <p class="lead">Bachiller en Ingeniería de Sistemas con <b>10+ años</b> entre operaciones y desarrollo. Construyo <em>sistemas que corren solos</em>: marketplaces, automatización con IA y plataformas en producción.</p>
+      <div class="actions">
+        <a class="btn solid" href="#work">Ver proyectos ↗</a>
+        <a class="btn quiet" href="CV-Eduardo-Milla-2026.pdf" target="_blank">Descargar CV ↓</a>
+      </div>
+      <div class="avail"><i></i> Abierto a posiciones full-stack y automatización</div>
+    </div>
+
+    <div class="portrait">
+      <div class="circle"></div>
+      <img src="fotoia.jpg" alt="Eduardo Milla Rosillo" onerror="this.onerror=function(){this.remove()};this.src='fotoia.jpg';">
+      <span class="star">✦</span>
+      <div class="vertical">Automatización · Datos · IA</div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <b>Full-Stack</b><i>✦</i><b>Automatización con IA</b><i>✦</i><b>Datos y documentos</b><i>✦</i><b>Pipelines en producción</b><i>✦</i>
+    <b>Full-Stack</b><i>✦</i><b>Automatización con IA</b><i>✦</i><b>Datos y documentos</b><i>✦</i><b>Pipelines en producción</b><i>✦</i>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="stats reveal">
+    <div class="stat">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <b><span data-count="10">0</span>+</b><span>Años de experiencia</span>
+    </div>
+    <div class="stat">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16v12H4z"/><path d="M8 7V4h8v3"/></svg>
+      <b><span data-count="3">0</span></b><span>Sistemas en producción</span>
+    </div>
+    <div class="stat">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17l5-6 4 3 5-7 4 4"/></svg>
+      <b><span data-count="240">0</span>+</b><span>Emisiones automatizadas</span>
+    </div>
+    <div class="stat">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12l4 4 10-10"/></svg>
+      <b><span data-count="38">0</span>/38</b><span>Tests automatizados</span>
+    </div>
+  </div>
+</div>
+
+<section class="wrap" id="work">
+  <div class="sec-top reveal">
+    <div>
+      <div class="label">01 — Portafolio</div>
+      <h2>Proyectos destacados</h2>
+    </div>
+    <div class="side"><a href="https://github.com/edumilla1994" target="_blank">Ver GitHub ↗</a></div>
+  </div>
+
+  <div class="work">
+    <div class="card reveal">
+      <div class="shot">
+        <div class="browser">
+          <div class="chrome"><i></i><i></i><i></i><span>primitivopie.shop</span></div>
+          <img src="capturas/primitivopie.jpg" alt="PrimitivoPie — catálogo de la tienda online" loading="lazy" width="1400" height="875">
+        </div>
+      </div>
+      <div class="body">
+        <div class="top">
+          <div><h3>PrimitivoPie</h3><div class="cat">Marketplace · Pagos por WhatsApp</div></div>
+          <a class="go" href="https://primitivopie.shop" target="_blank" aria-label="Abrir PrimitivoPie">↗</a>
+        </div>
+        <p class="desc">Tienda con panel de repartidores, mapa de entrega, bot de WhatsApp y notificaciones automáticas.</p>
+        <div class="stackline"><span>Next.js 16</span><span>React 19</span><span>Prisma</span><span>Neon</span></div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="shot">
+        <div class="browser">
+          <div class="chrome"><i></i><i></i><i></i><span>la-mare-menu.vercel.app</span></div>
+          <img src="capturas/lamare.jpg" alt="La Mare Tumbes — menú de pollo broaster" loading="lazy" width="1400" height="875">
+        </div>
+      </div>
+      <div class="body">
+        <div class="top">
+          <div><h3>La Mare Tumbes</h3><div class="cat">Pedidos · Comandas · Stock</div></div>
+          <a class="go" href="https://la-mare-menu.vercel.app" target="_blank" aria-label="Abrir La Mare">↗</a>
+        </div>
+        <p class="desc">Menú público, panel de cocina, control de stock y bot de WhatsApp con Yape.</p>
+        <div class="stackline"><span>Next.js</span><span>Supabase</span><span>WhatsApp</span></div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="shot">
+        <div class="browser">
+          <div class="chrome"><i></i><i></i><i></i><span>voice-lib.vercel.app</span></div>
+          <img src="capturas/voicelib.jpg" alt="VoiceLib — lector de PDF con generación de audio" loading="lazy" width="1400" height="875">
+        </div>
+      </div>
+      <div class="body">
+        <div class="top">
+          <div><h3>VoiceLib</h3><div class="cat">Audiolibros con IA</div></div>
+          <a class="go" href="https://voice-lib.vercel.app" target="_blank" aria-label="Abrir VoiceLib">↗</a>
+        </div>
+        <p class="desc">PDF, EPUB y DOCX a audio con 9 voces neurales, marcadores y PWA.</p>
+        <div class="stackline"><span>Flask</span><span>PostgreSQL</span><span>React</span><span>Docker</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="caps">
+  <div class="sec-top reveal">
+    <div>
+      <div class="label">02 — Capacidades</div>
+      <h2>Qué hago</h2>
+    </div>
+    <div class="side">De la idea a producción</div>
+  </div>
+
+  <div class="caps">
+    <div class="cap reveal">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 6 3 12l5 6M16 6l5 6-5 6"/></svg>
+      <div><h3>Desarrollo full-stack</h3><p>Next.js, React, Node/Express, Flask. APIs REST, JWT, RBAC y paneles administrativos.</p></div>
+      <span class="num">01</span>
+    </div>
+    <div class="cap reveal">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg>
+      <div><h3>Automatización con IA</h3><p>Pipelines de contenido, TTS, Whisper, agentes, RAG y servidores MCP.</p></div>
+      <span class="num">02</span>
+    </div>
+    <div class="cap reveal">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg>
+      <div><h3>Datos y documentos</h3><p>SUNAT, Excel avanzado, scraping e informes técnicos generados en Word/PDF.</p></div>
+      <span class="num">03</span>
+    </div>
+    <div class="cap reveal">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l7 3v6c0 4.4-3 7.5-7 9-4-1.5-7-4.6-7-9V6l7-3z"/><path d="m9 12 2 2 4-4"/></svg>
+      <div><h3>Producción y seguridad</h3><p>Docker, CI/CD, monitoreo, pruebas automatizadas y endurecimiento de aplicaciones.</p></div>
+      <span class="num">04</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="exp">
+  <div class="sec-top reveal">
+    <div>
+      <div class="label">03 — Trayectoria</div>
+      <h2>Experiencia</h2>
+    </div>
+    <div class="side">2013 — presente</div>
+  </div>
+
+  <div class="exp">
+    <div class="job reveal">
+      <div class="when">2025 — HOY</div>
+      <div>
+        <h3>Founder &amp; Full-Stack Developer</h3>
+        <div class="org">PrimitivoPie · primitivopie.shop</div>
+        <ul>
+          <li>Marketplace de reventas con pagos por WhatsApp (Yape/Plin), panel de repartidores, mapa y notificaciones.</li>
+          <li>Next.js 16, React 19, TypeScript, Prisma, Neon PostgreSQL, Upstash Redis y bot de WhatsApp.</li>
+          <li>CI/CD en menos de 30 s, RBAC, 38/38 tests y 11 vulnerabilidades resueltas.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div class="when">2024 — HOY</div>
+      <div>
+        <h3>Automatización e IA · Independiente</h3>
+        <div class="org">NoticiasDiarias · La Mare · TermoInforme</div>
+        <ul>
+          <li>Noticiero automatizado (@Olfatecho): scraping, guion con IA, 4 idiomas y publicación. 240+ emisiones.</li>
+          <li>La Mare Tumbes: pedidos, comandas, stock y bot de WhatsApp en producción.</li>
+          <li>Informes técnicos de termografía y calidad de energía; automatización SUNAT a Excel.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div class="when">2024 — 2025</div>
+      <div>
+        <h3>Desarrollador Full-Stack · Proyecto personal</h3>
+        <div class="org">VoiceLib · voice-lib.vercel.app</div>
+        <ul>
+          <li>Conversor de documentos a audiolibros con 9 voces neurales y marcadores.</li>
+          <li>Flask + PostgreSQL, React 18/Vite y Docker en Railway.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div class="when">2013 — HOY</div>
+      <div>
+        <h3>Asistente Técnico y de Gestión</h3>
+        <div class="org">Servicios de Ingeniería Eléctrica · Heli David Milla Vargas</div>
+        <ul>
+          <li>Logística de proyectos eléctricos en hospitales y entidades públicas.</li>
+          <li>Mantenimiento correctivo, aprovisionamiento y contratos con penalidades.</li>
+          <li>Liderazgo de cuadrillas de hasta 5 personas.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div class="when">2017 — 2019</div>
+      <div>
+        <h3>Asistente Administrativo y de Operaciones</h3>
+        <div class="org">Olimpex Agencia de Aduana S.A.C.</div>
+        <ul>
+          <li>Documentación diaria de despachos aduaneros de importación y exportación.</li>
+          <li>Coordinación con SUNAT e informes de seguimiento (5+ por semana).</li>
+          <li>Optimización de flujos: tiempos de respuesta reducidos en más de 20%.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="stack">
+  <div class="sec-top reveal">
+    <div>
+      <div class="label">04 — Herramientas</div>
+      <h2>Stack técnico</h2>
+    </div>
+    <div class="side">Formación y certificaciones</div>
+  </div>
+
+  <div class="stack-wrap">
+    <div class="stack reveal">
+      <div class="group"><h3>Backend</h3><ul><li>Node.js · Express 5</li><li>Python · Flask</li><li>REST APIs · JWT · RBAC</li><li>Prisma · SQLAlchemy</li></ul></div>
+      <div class="group"><h3>Frontend</h3><ul><li>Next.js 16 · React 19</li><li>TypeScript · JavaScript ES6+</li><li>Tailwind CSS · HTML5 · CSS3</li></ul></div>
+      <div class="group"><h3>Datos</h3><ul><li>PostgreSQL · Neon</li><li>MongoDB Atlas</li><li>Upstash Redis</li><li>Excel avanzado</li></ul></div>
+      <div class="group"><h3>DevOps y seguridad</h3><ul><li>Docker · GitHub Actions</li><li>Railway · Cloudflare · Sentry</li><li>bcrypt · Helmet · rate limiting</li></ul></div>
+      <div class="group"><h3>IA y automatización</h3><ul><li>APIs OpenAI-compatibles</li><li>Nemotron · Qwen · DeepSeek</li><li>RAG · Qdrant · MCP</li><li>TTS · Whisper · Demucs</li></ul></div>
+      <div class="group"><h3>Soporte y otros</h3><ul><li>CCTV · alarmas · redes</li><li>Gestión documental</li><li>Scraping (SUNAT, CEJ, X)</li><li>Git · Playwright · LaTeX</li></ul></div>
+    </div>
+
+    <div class="cert reveal">
+      <h3>Formación</h3>
+      <div class="item"><b>Bachiller en Ingeniería de Sistemas e Informática</b><span>Universidad Alas Peruanas · 2017</span></div>
+      <div class="item"><b>Certificaciones Alura Latam</b><span>Lógica, Git/GitHub, IA Generativa, Prompt Engineering</span></div>
+      <div class="item"><b>Idiomas</b><span>Español nativo · Inglés básico-intermedio</span></div>
+      <div class="item"><b>Licencia</b><span>Conducir categoría A-I (Perú)</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="proceso">
+  <div class="sec-top reveal">
+    <div>
+      <div class="label">05 — Método</div>
+      <h2>Cómo trabajo</h2>
+    </div>
+    <div class="side">Simple y verificable</div>
+  </div>
+
+  <div class="process">
+    <div class="step reveal"><div class="n">01</div><h3>Entender</h3><p>Proceso actual, datos y restricciones reales.</p></div>
+    <div class="step reveal"><div class="n">02</div><h3>Diseñar</h3><p>Arquitectura, modelo de datos y alcance.</p></div>
+    <div class="step reveal"><div class="n">03</div><h3>Construir</h3><p>Full-stack con pruebas y seguridad.</p></div>
+    <div class="step reveal"><div class="n">04</div><h3>Automatizar</h3><p>CI/CD, colas, monitoreo y alertas.</p></div>
+    <div class="step reveal"><div class="n">05</div><h3>Entregar</h3><p>Documentación, métricas y mantenimiento.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="contacto">
+  <div class="cta reveal">
+    <div class="inner">
+      <div>
+        <h2>Construyamos algo<br>que <em>corra solo</em></h2>
+      </div>
+      <div class="side">
+        <p>Abierto a posiciones full-stack, automatización y operaciones técnicas — remoto o presencial.</p>
+        <div class="links">
+          <a href="mailto:edumilla1994@gmail.com">edumilla1994@gmail.com <span>↗</span></a>
+          <a href="https://wa.me/51952964462" target="_blank">+51 952 964 462 <span>↗</span></a>
+          <a href="https://linkedin.com/in/edumilla1994" target="_blank">LinkedIn <span>↗</span></a>
+          <a href="CV-Eduardo-Milla-2026.pdf" target="_blank">Descargar CV <span>↓</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Eduardo Itai Milla Rosillo · Tumbes, Perú</span>
+    <span><a href="https://github.com/edumilla1994" target="_blank">GitHub</a> · <a href="https://linkedin.com/in/edumilla1994" target="_blank">LinkedIn</a> · <a href="https://primitivopie.shop" target="_blank">PrimitivoPie</a></span>
+  </div>
+</footer>
+
+<script>
+  // barra de progreso
+  const barra = document.getElementById('progress');
+  const progreso = () => {
+    const alto = document.documentElement.scrollHeight - innerHeight;
+    barra.style.width = (alto > 0 ? (scrollY / alto) * 100 : 0) + '%';
+  };
+  addEventListener('scroll', progreso, { passive: true });
+  progreso();
+
+  // reveal escalonado
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: .08 });
+  document.querySelectorAll('.reveal').forEach(el => {
+    const grupo = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
+    el.style.setProperty('--d', Math.min(grupo.indexOf(el) * 70, 350) + 'ms');
+    io.observe(el);
+  });
+  // red de seguridad: si el observer o la pestaña fallan, nada queda invisible
+  const revelarTodo = () => document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
+  if (!('IntersectionObserver' in window)) revelarTodo();
+  setTimeout(revelarTodo, 2600);
+
+  // contadores
+  const io2 = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, n = +el.dataset.count;
+    let t = 0, listo = false;
+    const paso = Math.max(1, Math.round(n / 40));
+    const fin = () => { listo = true; el.textContent = n; };
+    (function tick(){
+      if (listo) return;
+      t += paso; el.textContent = t >= n ? n : t;
+      if (t < n) requestAnimationFrame(tick);
+    })();
+    setTimeout(fin, 2000);
+    io2.unobserve(el);
+  }), { threshold: .5 });
+  document.querySelectorAll('[data-count]').forEach(el => io2.observe(el));
+  // si un contador nunca entró en pantalla, se deja el valor final igual
+  setTimeout(() => document.querySelectorAll('[data-count]').forEach(el => {
+    if (el.textContent === '0') el.textContent = el.dataset.count;
+  }), 3000);
+
+  // nav activo
+  const enlaces = [...document.querySelectorAll('nav ul a')];
+  const secciones = enlaces.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    enlaces.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+  secciones.forEach(s => spy.observe(s));
+</script>
+</body>
+</html>
