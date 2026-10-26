@@ -226,6 +226,9 @@
   .stack h3{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
   .stack ul{list-style:none;display:grid;gap:5px}
   .stack li{font-size:.83rem;color:var(--muted)}
+  .stack .logos{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:2px 0 13px;min-height:22px}
+  .stack .logos img{width:21px;height:21px;opacity:.5;transition:opacity .2s,transform .2s;user-select:none}
+  .stack .logos img:hover{opacity:1;transform:translateY(-3px)}
   .cert{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
   .cert h3{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
   .cert .item{padding:10px 0;border-bottom:1px solid var(--line)}
@@ -528,12 +531,55 @@
 
   <div class="stack-wrap">
     <div class="stack reveal">
-      <div class="group"><h3>Backend</h3><ul><li>Node.js · Express 5</li><li>Python · Flask</li><li>REST APIs · JWT · RBAC</li><li>Prisma · SQLAlchemy</li></ul></div>
-      <div class="group"><h3>Frontend</h3><ul><li>Next.js 16 · React 19</li><li>TypeScript · JavaScript ES6+</li><li>Tailwind CSS · HTML5 · CSS3</li></ul></div>
-      <div class="group"><h3>Datos</h3><ul><li>PostgreSQL · Neon</li><li>MongoDB Atlas</li><li>Upstash Redis</li><li>Excel avanzado</li></ul></div>
-      <div class="group"><h3>DevOps y seguridad</h3><ul><li>Docker · GitHub Actions</li><li>Railway · Cloudflare · Sentry</li><li>bcrypt · Helmet · rate limiting</li></ul></div>
-      <div class="group"><h3>IA y automatización</h3><ul><li>APIs OpenAI-compatibles</li><li>Nemotron · Qwen · DeepSeek</li><li>RAG · Qdrant · MCP</li><li>TTS · Whisper · Demucs</li></ul></div>
-      <div class="group"><h3>Soporte y otros</h3><ul><li>CCTV · alarmas · redes</li><li>Gestión documental</li><li>Scraping (SUNAT, CEJ, X)</li><li>Git · Playwright · LaTeX</li></ul></div>
+      <div class="group"><h3>Backend</h3>
+        <div class="logos">
+          <img src="logos/nodedotjs.svg" alt="Node.js" title="Node.js" loading="lazy">
+          <img src="logos/python.svg" alt="Python" title="Python" loading="lazy">
+          <img src="logos/flask.svg" alt="Flask" title="Flask" loading="lazy">
+          <img src="logos/prisma.svg" alt="Prisma" title="Prisma" loading="lazy">
+        </div>
+        <ul><li>Node.js · Express 5</li><li>Python · Flask</li><li>REST APIs · JWT · RBAC</li><li>Prisma · SQLAlchemy</li></ul></div>
+      <div class="group"><h3>Frontend</h3>
+        <div class="logos">
+          <img src="logos/nextdotjs.svg" alt="Next.js" title="Next.js" loading="lazy">
+          <img src="logos/react.svg" alt="React" title="React" loading="lazy">
+          <img src="logos/typescript.svg" alt="TypeScript" title="TypeScript" loading="lazy">
+          <img src="logos/javascript.svg" alt="JavaScript" title="JavaScript" loading="lazy">
+          <img src="logos/tailwindcss.svg" alt="Tailwind CSS" title="Tailwind CSS" loading="lazy">
+        </div>
+        <ul><li>Next.js 16 · React 19</li><li>TypeScript · JavaScript ES6+</li><li>Tailwind CSS · HTML5 · CSS3</li></ul></div>
+      <div class="group"><h3>Datos</h3>
+        <div class="logos">
+          <img src="logos/postgresql.svg" alt="PostgreSQL" title="PostgreSQL" loading="lazy">
+          <img src="logos/mongodb.svg" alt="MongoDB" title="MongoDB" loading="lazy">
+          <img src="logos/redis.svg" alt="Redis" title="Redis" loading="lazy">
+          <img src="logos/supabase.svg" alt="Supabase" title="Supabase" loading="lazy">
+        </div>
+        <ul><li>PostgreSQL · Neon</li><li>MongoDB Atlas</li><li>Upstash Redis</li><li>Excel avanzado</li></ul></div>
+      <div class="group"><h3>DevOps y seguridad</h3>
+        <div class="logos">
+          <img src="logos/docker.svg" alt="Docker" title="Docker" loading="lazy">
+          <img src="logos/githubactions.svg" alt="GitHub Actions" title="GitHub Actions" loading="lazy">
+          <img src="logos/railway.svg" alt="Railway" title="Railway" loading="lazy">
+          <img src="logos/cloudflare.svg" alt="Cloudflare" title="Cloudflare" loading="lazy">
+          <img src="logos/sentry.svg" alt="Sentry" title="Sentry" loading="lazy">
+          <img src="logos/vercel.svg" alt="Vercel" title="Vercel" loading="lazy">
+        </div>
+        <ul><li>Docker · GitHub Actions</li><li>Railway · Cloudflare · Sentry</li><li>bcrypt · Helmet · rate limiting</li></ul></div>
+      <div class="group"><h3>IA y automatización</h3>
+        <div class="logos">
+          <img src="logos/huggingface.svg" alt="Hugging Face" title="Hugging Face" loading="lazy">
+          <img src="logos/qdrant.svg" alt="Qdrant" title="Qdrant" loading="lazy">
+          <img src="logos/ffmpeg.svg" alt="FFmpeg" title="FFmpeg" loading="lazy">
+        </div>
+        <ul><li>APIs OpenAI-compatibles</li><li>Nemotron · Qwen · DeepSeek</li><li>RAG · Qdrant · MCP</li><li>TTS · Whisper · Demucs</li></ul></div>
+      <div class="group"><h3>Soporte y otros</h3>
+        <div class="logos">
+          <img src="logos/git.svg" alt="Git" title="Git" loading="lazy">
+          <img src="logos/latex.svg" alt="LaTeX" title="LaTeX" loading="lazy">
+          <img src="logos/whatsapp.svg" alt="WhatsApp" title="WhatsApp" loading="lazy">
+        </div>
+        <ul><li>CCTV · alarmas · redes</li><li>Gestión documental</li><li>Scraping (SUNAT, CEJ, X)</li><li>Git · Playwright · LaTeX</li></ul></div>
     </div>
 
     <div class="cert reveal">
