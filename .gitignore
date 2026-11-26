@@ -1,10 +1,5 @@
 .vercel
 .env*
 
-# Documentos personales del CV: no publicar DNI, licencias ni certificados
-cv/*.pdf
-cv/*.docx
-cv/*.jpg
-cv/*.jpeg
-cv/*.png
-cv/~$*
+# CV local con DNI, CUL, licencia y certificados: no publicar
+cv/

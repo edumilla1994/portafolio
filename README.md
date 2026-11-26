@@ -33,7 +33,7 @@ python -m http.server 8000
 ## CV
 
 - `CV-Eduardo-Milla-2026.pdf` es la versión pública de 2 páginas, generada desde `cv/build_cv_ats.py`.
-- `cv/CV-Eduardo-Milla-2026-COMPLETO.pdf` es el expediente de 13 páginas con DNI, diploma y certificados. **No se publica en la web.**
+- `cv/CV-Eduardo-Milla-2026-COMPLETO.pdf` es el expediente de 16 páginas con DNI, CUL, diploma, certificados de trabajo, cursos y licencia. **No se publica en la web.**
 - La fuente de verdad es `cv/mi-perfil.md`; si cambia un dato, actualizarlo ahí y regenerar:
 
 ```bash
